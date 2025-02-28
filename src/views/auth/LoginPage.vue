@@ -74,27 +74,30 @@
 					</div>
 					<div>
 						<label class="block text-gray-700 dark:text-gray-400">Email address</label>
-						<div class="relative flex items-center mt-1">
-							<span class="absolute left-3 text-gray-500">📧</span>
-							<input
+						<IconField fluid>
+							<InputIcon>
+								<i class="pi pi-envelope" />
+							</InputIcon>
+							<InputText
+								type="text"
 								v-model="email"
-								type="email"
+								fluid
 								placeholder="name@company.com"
-								class="w-full pl-10 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400"
 							/>
-						</div>
+						</IconField>
 					</div>
 					<div>
 						<label class="block mt-4 text-gray-700 dark:text-gray-400">Password</label>
-						<div class="relative flex items-center mt-1">
-							<span class="absolute left-3 text-gray-500">🔒</span>
-							<input
+						<IconField fluid>
+							<InputIcon>
+								<i class="pi pi-lock" />
+							</InputIcon>
+							<Password
+								:feedback="false"
 								v-model="password"
-								type="password"
-								placeholder="Enter your password"
-								class="w-full pl-10 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400"
+								fluid
 							/>
-						</div>
+						</IconField>
 					</div>
 					<button
 						type="submit"

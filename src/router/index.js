@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AuthenticatedUserLayout from '@/layouts/authenticated/AuthenticatedUserLayout.vue'
 import UserTicketManagement from '@/views/tickets/UserTicketManagement.vue'
-import KnowledgeBasePage from '@/views/tickets/KnowledgeBasePage.vue'
 import CreateTicketPage from '@/views/tickets/CreateTicketPage.vue'
 import UserHomePage from '@/views/tickets/UserHomePage.vue'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css' // Import styles
 import LoginPage from '@/views/auth/LoginPage.vue'
+import KnowledgeBasePage from '@/views/knowledge_based/KnowledgeBasePage.vue'
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),

@@ -2,7 +2,7 @@
 	<div
 		class="fixed top-0 left-0 right-0 z-50 w-screen h-14 bg-blue-800 text-white flex justify-between items-center px-4 gap-4 drop-shadow-sm"
 	>
-		<div class="flex gap-2 justify-center items-center">
+		<div class="flex gap-4 justify-center items-center">
 			<i
 				class="pi pi-bars hover:cursor-pointer"
 				style="font-size: 2rem"

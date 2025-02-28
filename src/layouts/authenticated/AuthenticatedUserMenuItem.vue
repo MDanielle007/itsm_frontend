@@ -9,8 +9,8 @@
 				activeClass="text-primary border-l-2 border-primary dark:text-blue-400 dark:border-l-2 dark:border-blue-400"
 				exactActiveClass="text-primary border-l-2 border-primary dark:text-blue-400 dark:border-l-2 dark:border-blue-400"
 			>
-				<i :class="menuItem.icon + ' mr-3'"></i>
-				<span class="font-semibold">{{ menuItem.label }}</span>
+				<i :class="menuItem.icon + (collapsed ? '' : ' mr-3')"></i>
+				<span v-if="!collapsed" class="font-semibold">{{ menuItem.label }}</span>
 			</router-link>
 
 			<!-- Expandable Menus -->
@@ -18,17 +18,22 @@
 				<a
 					@click="toggleMenu(index)"
 					class="flex items-center cursor-pointer p-3 rounded-r-md text-gray-800 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-900 transition-colors"
+					:class="{
+						'text-primary border-l-2 border-primary dark:text-blue-400 dark:border-l-2 dark:border-blue-400': isChildActive(menuItem)
+					}"
 				>
-					<i :class="menuItem.icon + ' mr-3'"></i>
-					<span class="font-semibold">{{ menuItem.label }}</span>
+					<i :class="menuItem.icon + (collapsed ? '' : ' mr-3')"></i>
+					<span v-if="!collapsed" class="font-semibold">{{ menuItem.label }}</span>
 					<i
+						v-if="!collapsed"
 						class="pi pi-chevron-down ml-auto transition-transform"
 						:class="{ 'rotate-180': openMenus.includes(index) }"
 					></i>
 				</a>
 
-				<!-- Submenus with Slide Transition -->
+				<!-- Only show submenu when not collapsed -->
 				<transition
+					v-if="!collapsed"
 					name="slide-down"
 					@before-enter="beforeEnter"
 					@enter="enter"
@@ -56,12 +61,31 @@
 </template>
 
 <script>
+import { useRoute } from 'vue-router'
+import { computed } from 'vue'
+
 export default {
 	props: {
 		menuItems: {
 			type: Array,
 			required: true,
 		},
+		collapsed: {
+			type: Boolean,
+			default: false
+		}
+	},
+	setup() {
+		const route = useRoute()
+
+		const isChildActive = (menuItem) => {
+			if (!menuItem.children) return false
+			return menuItem.children.some(child => child.route.name === route.name)
+		}
+
+		return {
+			isChildActive
+		}
 	},
 	data() {
 		return {

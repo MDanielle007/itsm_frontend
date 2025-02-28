@@ -1,5 +1,5 @@
 <template>
-	<div class="text-slate-800 dark:text-slate-100 flex gap-6">
+	<div class="text-slate-800 dark:text-slate-100 flex gap-6 justify-center ">
 		<div class="w-[700px] px-14">
 			<h2 class="font-bold text-2xl">Create Ticket</h2>
 			<form @submit.prevent="onFormSubmit">
@@ -10,20 +10,20 @@
 							<div class="flex items-center gap-2">
 								<RadioButton
 									v-model="formData.type"
-									inputId="Software"
+									inputId="Incident"
 									name="ticket_type"
-									value="software"
+									value="incident"
 								/>
-								<label for="Software">Software</label>
+								<label for="Incident">Incident</label>
 							</div>
 							<div class="flex items-center gap-2">
 								<RadioButton
 									v-model="formData.type"
-									inputId="Hardware"
+									inputId="Service"
 									name="ticket_type"
-									value="hardware"
+									value="service"
 								/>
-								<label for="Hardware">Hardware</label>
+								<label for="Service">Service</label>
 							</div>
 						</div>
 					</div>
@@ -102,7 +102,7 @@
 		<div class="h-full w-96 rounded-lg p-5 bg-white dark:bg-slate-800 drop-shadow-lg">
 			<h3 class="font-semibold mb-4">Knowledge Base Suggestion</h3>
 			<div v-for="(item, index) in knowledgeBaseSuggestion" :key="index">
-				<div class="flex flex-col p-4 rounded-md gap-2 border mb-4 dark:bg-slate-700">
+				<div class="flex flex-col p-4 rounded-md gap-2 border mb-4 dark:bg-slate-700 dark:border-slate-500">
 					<h6 class="font-semibold">
 						<i class="pi pi-lightbulb" style="font-size: 1rem"></i>
 						{{ item.title }}

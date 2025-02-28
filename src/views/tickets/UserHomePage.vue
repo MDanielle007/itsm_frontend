@@ -21,7 +21,7 @@
 				<div
 					class="bg-white text-black dark:bg-gray-800 dark:text-gray-50 p-6 rounded-lg shadow-lg text-center"
 				>
-					<span class="text-3xl">🖥️</span>
+					<span class="text-3xl cursor-pointer">🖥️</span>
 					<h2 class="text-xl font-semibold mt-2">Tickets</h2>
 					<p class="text-gray-600 dark:text-gray-400 mt-1">
 						View and manage your support requests.
@@ -37,7 +37,7 @@
 				<div
 					class="bg-white text-black dark:bg-gray-800 dark:text-gray-50 p-6 rounded-lg shadow-lg text-center"
 				>
-					<span class="text-3xl">⚙️</span>
+					<span class="text-3xl cursor-pointer">⚙️</span>
 					<h2 class="text-xl font-semibold mt-2">Need Help?</h2>
 					<p class="text-gray-600 dark:text-gray-400 mt-1">
 						Create a new support request here.
@@ -53,7 +53,7 @@
 				<div
 					class="bg-white text-black dark:bg-gray-800 dark:text-gray-50 p-6 rounded-lg shadow-lg text-center"
 				>
-					<span class="text-3xl">📖</span>
+					<span class="text-3xl cursor-pointer">📖</span>
 					<h2 class="text-xl font-semibold mt-2">Knowledge Base</h2>
 					<p class="text-gray-600 dark:text-gray-400 mt-1">
 						FAQs, self-help guides, and troubleshooting articles.

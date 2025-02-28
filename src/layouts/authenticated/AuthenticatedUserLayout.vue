@@ -6,17 +6,14 @@
 		<!-- Main Content -->
 		<main
 			:class="[
-				'flex-1 pt-16 pr-2 h-full w-full transition-all duration-300 ease-in-out',
-				isSidebarVisible ? 'xl:pl-80' : 'xl:pl-0',
+				'flex-1 pt-16 pr-2 h-full w-full transition-all duration-300 ease-in-out pl-14',
+				isSidebarVisible ? 'xl:pl-80' : 'xl:pl-16',
 			]"
 		>
 			<ScrollPanel
-				style="width: 100%; height: 650px"
-				:dt="{
-					bar: {
-						background: '{blue.600}',
-					},
-				}"
+				class="w-full"
+				:style="{ height: `${scrollHeight}px` }"
+				:dt="{ bar: { background: '{blue.600}' } }"
 			>
 				<div class="p-2 sm:p-4 md:p-6">
 					<router-view></router-view>
@@ -27,7 +24,7 @@
 </template>
 
 <script>
-import { computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import AunthenticatedUserAppBar from './AunthenticatedUserAppBar.vue'
 import AuthenticatedUserSidebar from './AuthenticatedUserSidebar.vue'
 import { useLayoutStore } from '@/stores/layoutStore'
@@ -41,15 +38,23 @@ export default {
 		const layoutStore = useLayoutStore()
 		const isSidebarVisible = computed(() => layoutStore.sideBar)
 
+		const scrollHeight = ref(window.innerHeight - 64) // Adjust based on your layout
+
+		const updateScrollHeight = () => {
+			scrollHeight.value = window.innerHeight - 64 // Adjust for navbar height if needed
+		}
+
 		onMounted(() => {
 			layoutStore.initResizeListener()
+			window.addEventListener('resize', updateScrollHeight)
 		})
 
 		onUnmounted(() => {
 			layoutStore.cleanupResizeListener()
+			window.removeEventListener('resize', updateScrollHeight)
 		})
 
-		return { isSidebarVisible }
+		return { isSidebarVisible, scrollHeight }
 	},
 }
 </script>
