@@ -13,7 +13,7 @@
 			<ScrollPanel
 				class="w-full"
 				:style="{ height: `${scrollHeight}px` }"
-				:dt="{ bar: { background: '{blue.600}' } }"
+				:dt="{ bar: { background: '{primary.600}' } }"
 			>
 				<div class="p-2 sm:p-4 md:p-6">
 					<router-view></router-view>

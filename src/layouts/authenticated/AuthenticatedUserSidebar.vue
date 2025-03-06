@@ -30,14 +30,12 @@
 			:menuItems="userMenuItems"
 			:collapsed="!isSidebarVisible && !isHovered"
 		/>
-		<Button
-			text
-			class="text-700 mr-2 flex gap-2"
-			pt:root:style="color: "
-			@click="handleLogOut"
-		>
+		<Button text class="text-700 mr-2 flex gap-2" pt:root:style="color: " @click="handleLogOut">
 			<span class="text-slate-800 dark:text-white hover:text-red-600">
-				<i class="pi pi-sign-out" :class="[isSidebarVisible || isHovered ? 'mr-3' : '']"></i>
+				<i
+					class="pi pi-sign-out"
+					:class="[isSidebarVisible || isHovered ? 'mr-3' : '']"
+				></i>
 				<span v-if="isSidebarVisible || isHovered" class="font-semibold">Log out</span>
 			</span>
 		</Button>
@@ -103,7 +101,7 @@ const menuItems = ref([
 			},
 		],
 	},
-	
+
 	{
 		label: 'Knowledge Base',
 		route: { name: 'knowledge-base' },
@@ -113,15 +111,14 @@ const menuItems = ref([
 	{
 		label: 'Other pages',
 		icon: 'pi pi-cog',
-		children:[
+		children: [
 			{
 				label: 'UserManagement',
 				route: {
-					name: 'UserManagement'
+					name: 'UserManagement',
 				},
-			}
-		]
-
+			},
+		],
 	},
 ])
 

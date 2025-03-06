@@ -32,12 +32,7 @@
 				</h2>
 			</div>
 			<div class="flex gap-3">
-				<button
-					@click="visible = true"
-					class="border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
-				>
-					<i class="pi pi-chart-line mr-2"></i> Update Status
-				</button>
+				<Tag icon="pi pi-clock" severity="info" value="In Progress"></Tag>
 				<button
 					@click="confirmCloseTicket"
 					class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-500"
@@ -272,7 +267,7 @@ export default {
 					outlined: true,
 				},
 				acceptProps: {
-					label: 'Delete',
+					label: 'Close Ticket',
 					severity: 'danger',
 				},
 				accept: () => {
@@ -281,18 +276,10 @@ export default {
 						summary: 'Confirmed',
 						detail: 'Ticket has been closed.',
 						life: 3000,
-					});
-                    setTimeout(() => {
-                        this.$router.push('/app/tickets');
-                        }, 1500);
-				},
-				reject: () => {
-					this.$toast.add({
-						severity: 'error',
-						summary: 'Rejected',
-						detail: 'You have rejected',
-						life: 3000,
 					})
+					setTimeout(() => {
+						this.$router.push('/app/tickets')
+					}, 1500)
 				},
 			})
 		},
@@ -303,7 +290,7 @@ export default {
 				detail: 'Ticket Status Updated',
 				life: 3000,
 			})
-            this.visible = false
+			this.visible = false
 		},
 		updateTicketStatus() {
 			console.log('Status updated')

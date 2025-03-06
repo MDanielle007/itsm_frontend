@@ -26,11 +26,13 @@
 					<p class="text-gray-600 dark:text-gray-400 mt-1">
 						View and manage your support requests.
 					</p>
-					<button
-						class="mt-4 bg-gray-900 text-white px-4 py-2 rounded flex items-center mx-auto"
-					>
-						MORE ➜
-					</button>
+					<router-link :to="{ name: 'user-ticket-management' }">
+						<button
+							class="mt-4 bg-gray-900 text-white px-4 py-2 rounded flex items-center mx-auto"
+						>
+							MORE ➜
+						</button>
+					</router-link>
 				</div>
 
 				<!-- Need Help Card -->
@@ -42,11 +44,13 @@
 					<p class="text-gray-600 dark:text-gray-400 mt-1">
 						Create a new support request here.
 					</p>
-					<button
-						class="mt-4 bg-gray-900 text-white px-4 py-2 rounded flex items-center mx-auto"
-					>
-						MORE ➜
-					</button>
+					<router-link :to="{ name: 'user-create-ticket' }">
+						<button
+							class="mt-4 bg-gray-900 text-white px-4 py-2 rounded flex items-center mx-auto"
+						>
+							MORE ➜
+						</button>
+					</router-link>
 				</div>
 
 				<!-- Knowledge Base Card -->
@@ -58,11 +62,13 @@
 					<p class="text-gray-600 dark:text-gray-400 mt-1">
 						FAQs, self-help guides, and troubleshooting articles.
 					</p>
-					<button
-						class="mt-4 bg-gray-900 text-white px-4 py-2 rounded flex items-center mx-auto"
-					>
-						MORE ➜
-					</button>
+					<router-link :to="{ name: 'knowledge-base' }">
+						<button
+							class="mt-4 bg-gray-900 text-white px-4 py-2 rounded flex items-center mx-auto"
+						>
+							MORE ➜
+						</button>
+					</router-link>
 				</div>
 			</div>
 		</div>
