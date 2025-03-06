@@ -1,5 +1,5 @@
 <template>
-	<div class="text-slate-800 dark:text-slate-100 flex gap-6 justify-center ">
+	<div class="text-slate-800 dark:text-slate-100 flex gap-6 justify-center">
 		<div class="w-[700px] px-14">
 			<h2 class="font-bold text-2xl">Create Ticket</h2>
 			<form @submit.prevent="onFormSubmit">
@@ -92,7 +92,7 @@
 						</FileUpload>
 					</div>
 					<div class="flex justify-end gap-2">
-						<Button severity="secondary" @click="clearInput" label="Clear" />
+						<Button severity="secondary" @click="confirmClearTicket" label="Clear" />
 						<Button type="submit" label="Submit" />
 					</div>
 				</div>
@@ -102,7 +102,9 @@
 		<div class="h-full w-96 rounded-lg p-5 bg-white dark:bg-slate-800 drop-shadow-lg">
 			<h3 class="font-semibold mb-4">Knowledge Base Suggestion</h3>
 			<div v-for="(item, index) in knowledgeBaseSuggestion" :key="index">
-				<div class="flex flex-col p-4 rounded-md gap-2 border mb-4 dark:bg-slate-700 dark:border-slate-500">
+				<div
+					class="flex flex-col p-4 rounded-md gap-2 border mb-4 dark:bg-slate-700 dark:border-slate-500"
+				>
 					<h6 class="font-semibold">
 						<i class="pi pi-lightbulb" style="font-size: 1rem"></i>
 						{{ item.title }}
@@ -257,6 +259,9 @@ export default {
 				[]
 			)
 		},
+		isFormFilled() {
+			return Object.values(this.formData).some((value) => value)
+		},
 	},
 	methods: {
 		onFormSubmit() {
@@ -286,17 +291,34 @@ export default {
 				description: '',
 			}
 		},
-	},
-	watch: {
-		// Reset subCategory and subLevel3Category when category changes
-		'formData.category'(newVal) {
-			this.formData.subCategory = '' // Reset subCategory
-			this.formData.subLevel3Category = '' // Reset subLevel3Category
-		},
+		confirmClearTicket() {
+			if (this.isFormFilled) {
+				this.$confirm.require({
+					message: 'Are you sure you want to clear this ticket submition form?',
+					header: 'Clear Form',
+					icon: 'pi pi-info-circle',
+					rejectLabel: 'Cancel',
+					rejectProps: {
+						label: 'Cancel',
+						severity: 'secondary',
+						outlined: true,
+					},
+					acceptProps: {
+						label: 'Confirm',
+						severity: 'danger',
+					},
+					accept: () => {
+						this.$toast.add({
+							severity: 'info',
+							summary: 'Info',
+							detail: 'Form has cleared.',
+							life: 3000,
+						})
 
-		// Reset subLevel3Category when subCategory changes
-		'formData.subCategory'(newVal) {
-			this.formData.subLevel3Category = '' // Reset subLevel3Category
+						this.clearInput()
+					},
+				})
+			}
 		},
 	},
 }
