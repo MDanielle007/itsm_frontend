@@ -29,7 +29,13 @@
 					<a href="#" class="text-sm mt-2 text-primary">See more</a>
 				</div>
 				<div v-for="(article, index) in mostViewedArticle" :key="index">
-					<ArticleCard :title="article.title" :views="article.views" :description="article.description" />
+					<router-link :to="{ name: 'knowledge-base-article' }">
+						<ArticleCard
+							:title="article.title"
+							:views="article.views"
+							:description="article.description"
+						/>
+					</router-link>
 				</div>
 			</div>
 
@@ -38,16 +44,21 @@
 					<h2 class="text-xl font-semibold mb-4">Recently Updated</h2>
 					<a href="#" class="text-sm mt-2 text-primary">See more</a>
 				</div>
-				<ArticleCard
-					title="2025 Security Updates"
-					updated="Updated 2 hours ago"
-					description="Latest security patches and improvements."
-				/>
-				<ArticleCard
-					title="Hardware Compatibility Guide"
-					updated="Updated 1 day ago"
-					description="Updated compatibility list for latest devices."
-				/>
+				<router-link :to="{ name: 'knowledge-base-article' }">
+					<ArticleCard
+						title="2025 Security Updates"
+						updated="Updated 2 hours ago"
+						description="Latest security patches and improvements."
+					/>
+				</router-link>
+
+				<router-link :to="{ name: 'knowledge-base-article' }">
+					<ArticleCard
+						title="Hardware Compatibility Guide"
+						updated="Updated 1 day ago"
+						description="Updated compatibility list for latest devices."
+					/>
+				</router-link>
 			</div>
 		</section>
 	</div>

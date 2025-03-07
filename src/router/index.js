@@ -7,6 +7,7 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css' // Import styles
 import LoginPage from '@/views/auth/LoginPage.vue'
 import KnowledgeBasePage from '@/views/knowledge_based/KnowledgeBasePage.vue'
+import KnowledgeBaseArticle from '@/views/knowledge_based/KnowledgeBaseArticle.vue'
 import TicketDetails from '@/views/tickets/TicketDetails.vue' // Import the new ticket details page
 import UserManagement from '@/components/UserManagement.vue'
 
@@ -53,6 +54,11 @@ const router = createRouter({
 					name: 'ticket-details',
 					component: TicketDetails,
 					props: true, // Pass ticketId as a prop to the component
+				},
+				{
+					path: 'knowledge/article',
+					name: 'knowledge-base-article',
+					component: KnowledgeBaseArticle,
 				},
 			],
 		},

@@ -107,19 +107,6 @@ const menuItems = ref([
 		route: { name: 'knowledge-base' },
 		icon: 'pi pi-book',
 	},
-
-	{
-		label: 'Other pages',
-		icon: 'pi pi-cog',
-		children: [
-			{
-				label: 'UserManagement',
-				route: {
-					name: 'UserManagement',
-				},
-			},
-		],
-	},
 ])
 
 const userMenuItems = ref([])
