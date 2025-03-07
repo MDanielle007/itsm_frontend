@@ -7,6 +7,8 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css' // Import styles
 import LoginPage from '@/views/auth/LoginPage.vue'
 import KnowledgeBasePage from '@/views/knowledge_based/KnowledgeBasePage.vue'
+import TicketDetails from '@/views/tickets/TicketDetails.vue' // Import the new ticket details page
+import UserManagement from '@/components/UserManagement.vue'
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -40,18 +42,32 @@ const router = createRouter({
 					name: 'knowledge-base',
 					component: KnowledgeBasePage,
 				},
+				{
+					path: 'UserManagement',
+					name: 'UserManagement',
+					component: UserManagement,
+				},
+				// New route for viewing ticket details
+				{
+					path: 'tickets/:ticketId',
+					name: 'ticket-details',
+					component: TicketDetails,
+					props: true, // Pass ticketId as a prop to the component
+				},
 			],
 		},
 	],
 })
 
+// Start NProgress loading bar before route change
 router.beforeEach((to, from, next) => {
-	NProgress.start() // Start loading bar
+	NProgress.start()
 	next()
 })
 
+// Stop NProgress loading bar after route change
 router.afterEach(() => {
-	NProgress.done() // End loading bar
+	NProgress.done()
 })
 
 export default router

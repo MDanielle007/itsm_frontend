@@ -10,7 +10,6 @@ import ConfirmationService from 'primevue/confirmationservice';
 import ToastService from 'primevue/toastservice';
 import Ripple from 'primevue/ripple';
 
-
 import App from './App.vue'
 import router from './router'
 import AppState from './plugins/appState'
