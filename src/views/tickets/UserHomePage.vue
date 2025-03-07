@@ -11,7 +11,7 @@
 						placeholder="Search for help..."
 						class="w-full p-3 pl-10 rounded-full bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
 					/>
-					<span class="absolute left-3 top-3 text-gray-400">🔍</span>
+					<i class="pi pi-search absolute left-4 top-4 text-gray-300" style="font-size: 1rem"></i>
 				</div>
 			</div>
 
